@@ -4,7 +4,7 @@ import { Card, CardBody, Text, Container, Box, Heading } from "@chakra-ui/react"
 function TextBox({ bgColor, text, onClick }) {
 
     return (
-        <Card mt="10px" mb="10px" size="lg" bg={bgColor} onClick={onClick}>
+        <Card mt="10px" mb="10px" size="lg" bg={bgColor} onClick={onClick} cursor="pointer">
             <CardBody>
                 <Text>{text}</Text>
             </CardBody>
@@ -93,8 +93,8 @@ export default function FunFact() {
             <Heading size="md" textAlign="center">Which fact is true about Thienan?</Heading>
             <Text textAlign="center" mb="20px">Click what you think is the fact. The fact will light up green!</Text>
             <TextBoxGroup textArray={texts}></TextBoxGroup>
-            <Text textAlign="center" mb="20px" mt="20px">Loading time is like 30 seconds for the first
-            render so sit tight.</Text>
+            <Text textAlign="center" mb="20px" mt="20px">Loading time is like a minute for the first
+            render so sit tight. 5-10 seconds for renders after that.</Text>
         </Box>
     )
 }
