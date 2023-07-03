@@ -1,21 +1,38 @@
-import { Card, CardBody, Image, Stack, Heading, Text, Grid, GridItem, Center} from '@chakra-ui/react';
+import { Card, CardBody, Image, Stack, Heading, Text, Grid, GridItem} from '@chakra-ui/react';
 
-function Project({ url, img_src, alt, title, year, desc}) {
+function Media({ src, srcType, alt }) {
     return (
-        <div className="project-container">
-            {url ? (
+        srcType === "img" ? (
+            <Image
+            src={src}
+            alt={alt}
+            borderRadius='lg'
+            w="200px"
+            h="200px"
+            margin="auto" />
+        ) : (
+            <video
+            src={src}
+            alt={alt}
+            controls
+            style={{
+                width: "200px",
+                height: "200px",
+                margin: "auto"
+            }} />
+        )
+    )
+}
+
+// change stack height for longer text!!!
+function Project({ url, src, srcType, alt, title, year, desc}) {
+    return (
+            url ? (
                 <a href={url}>
-                    <Card maxW='sm' maxWidth="300px" mb="10px">
+                    <Card maxW='sm'>
                         <CardBody>
-                            <Image
-                            src={img_src}
-                            alt={alt}
-                            borderRadius='lg'
-                            w="200px"
-                            h="200px"
-                            margin="auto"
-                            />
-                            <Stack mt='6' spacing='3' h="150px" >
+                            <Media src={src} srcType={srcType} alt={alt}/>
+                            <Stack mt='6' spacing='3' h={225} >
                                 <Heading size='md'>{title}</Heading>
                                 <Heading size='sm'>{year}</Heading>
                                 <Text>{desc}</Text>
@@ -24,25 +41,17 @@ function Project({ url, img_src, alt, title, year, desc}) {
                     </Card>
                 </a>
             ) : (
-                <Card maxW='sm' maxWidth="300px" mb="10px">
+                <Card maxW='sm'>
                     <CardBody>
-                        <Image
-                        src={img_src}
-                        alt={alt}
-                        borderRadius='lg'
-                        w="200px"
-                        h="200px"
-                        margin="auto"
-                        />
-                        <Stack mt='6' spacing='3' h="150px">
+                    <Media src={src} srcType={srcType} alt={alt}/>
+                        <Stack mt='6' spacing='3' h={225}>
                             <Heading size='md'>{title}</Heading>
                             <Heading size='sm'>{year}</Heading>
                             <Text>{desc}</Text>
                         </Stack>
                     </CardBody>
             </Card>
-            )}
-        </div>
+            )
     );
 }
 
@@ -50,18 +59,20 @@ export default function Projects( {projectList} ) {
     const projectComponentList = projectList.map(project => 
         <GridItem>
             <Project url={project.url ? project.url : null} 
-                    img_src={project.img_src} 
+                    src={project.src} 
+                    srcType={project.srcType}
                     alt={project.alt}
                     title={project.title} 
                     year={project.year} 
-                    desc={project.desc}></Project>
+                    desc={project.desc} />
         </GridItem>
     );
 
     return (
         <>
             <Heading textAlign="center" mb="20px">Projects</Heading>
-            <Grid templateColumns="repeat(auto-fill, minmax(200px, 300px))" justifyContent="center" columnGap="10px">{projectComponentList}</Grid>
+            <Grid templateColumns="repeat(auto-fill, minmax(200px, 300px))" 
+            columnGap="10px" rowGap="10px">{projectComponentList}</Grid>
         </>
     )
 

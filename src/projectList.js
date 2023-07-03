@@ -1,29 +1,22 @@
-import deathNote from "./images/death-note.png";
-import memeGenerator from "./images/meme-generator.png";
-import oldWebsite from "./images/old-website.png";
-import photoshare from "./images/photoshare.png";
-import yearbook from "./images/yearbook.jpg";
+import mafia from './media/mafia.mp4';
+import photoshare from "./media/photoshare.png";
+import lettersai from './media/lettersai.png';
 
 const projects = [
     {
-        url: "https://thienantranwebsite.netlify.app/",
-        img_src: oldWebsite,
-        alt: "Screenshot of my old website",
-        title: "Personal Website 3.0",
+        url: null,
+        src: mafia,
+        srcType: "video",
+        alt: "Short demo of mafia web app",
+        title: "Mafia Web App",
         year: 2023,
-        desc: "Third time I tried making a personal website. Used React. Don't judge please 🙏."
-    },
-    {
-        url: "https://bwq15w.csb.app/",
-        img_src: deathNote,
-        alt: "Screenshot of my death note website",
-        title: "Death Note",
-        year: 2023,
-        desc: "Inspired by the anime. Used React. Unfinished. Glorified to-do list."
+        desc: `Web game based on mobile game Mafia Mystery. Implements JWT authorization and authentication.
+        Features realtime data via socket.io. Used MongoDB, Express, React, Node.js, and Typescript.`
     },
     {
         url: null,
-        img_src: photoshare,
+        src: photoshare,
+        srcType: "img",
         alt: "Screenshot of the photoshare website",
         title: "Photoshare",
         year: 2023,
@@ -31,20 +24,15 @@ const projects = [
     },
     {
         url: null,
-        img_src: memeGenerator,
-        alt: "Screenshot of the meme generator website",
-        title: "Meme Generator",
+        src: lettersai,
+        srcType: "img",
+        alt: "Screenshot of a handwritten letter",
+        title: "Letters AI",
         year: 2023,
-        desc: "Meme-sharing website. Uses 3 APIs to make a meme. Has Google Sign-In. Used Flask and SQLite."
+        desc: `Collected handwritten letters. Trained several models, using convolutional neural 
+        networks and transfer learning, to produce a model with at least 95% accuracy.`
     },
-    {
-        url: null,
-        img_src: yearbook,
-        alt: "Picture of me as a senior in my high school yearbook",
-        title: "Yearbook",
-        year: 2022,
-        desc: "Users can upload and view profiles. Used Node, Express, and MongoDB."
-    }
+
 ];
 
 export default projects;
